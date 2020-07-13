@@ -1,4 +1,4 @@
-    body {
+body {
       margin: 0;
       padding: 0;
     }
@@ -59,3 +59,11 @@
     .mapboxgl-popup-anchor-top>.mapboxgl-popup-tip {
       border-bottom-color: rgb(61, 59, 59);
     }
+
+a.mapboxgl-ctrl-logo{
+  display: none !important;
+}
+
+.mapboxgl-ctrl-bottom-right{
+  display: none !important;
+}
