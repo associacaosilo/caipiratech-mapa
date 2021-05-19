@@ -70,13 +70,41 @@
         type: "GET",
         //YOUR TURN: Replace with csv export link
         //https://www.mapbox.com/impact-tools/sheet-mapper
-        url: 'https://docs.google.com/spreadsheets/d/14uzofB5ax8jGVoI6ox5y8JAk3e0t_HrwhfzlGcs8FBE/gviz/tq?tqx=out:csv&sheet=Sheet1',
+        url: 'https://docs.google.com/spreadsheets/d/14uzofB5ax8jGVoI6ox5y8JAk3e0t_HrwhfzlGcs8FBE/gviz/tq?tqx=out:csv&sheet=Cinthia',
         dataType: "text",
         success: function (csvData) { makeGeoJSON(csvData); }
       });
+      
+      $.ajax({
+        type: "GET",
+        //YOUR TURN: Replace with csv export link
+        //https://www.mapbox.com/impact-tools/sheet-mapper
+        url: 'https://docs.google.com/spreadsheets/d/14uzofB5ax8jGVoI6ox5y8JAk3e0t_HrwhfzlGcs8FBE/gviz/tq?tqx=out:csv&sheet=Aline',
+        dataType: "text",
+        success: function (csvData) { makeGeoJSON2(csvData); }
+      });
+      
+      $.ajax({
+        type: "GET",
+        //YOUR TURN: Replace with csv export link
+        //https://www.mapbox.com/impact-tools/sheet-mapper
+        url: 'https://docs.google.com/spreadsheets/d/14uzofB5ax8jGVoI6ox5y8JAk3e0t_HrwhfzlGcs8FBE/gviz/tq?tqx=out:csv&sheet=Alketa',
+        dataType: "text",
+        success: function (csvData) { makeGeoJSON3(csvData); }
+      });
+       
+      $.ajax({
+        type: "GET",
+        //YOUR TURN: Replace with csv export link
+        //https://www.mapbox.com/impact-tools/sheet-mapper
+        url: 'https://docs.google.com/spreadsheets/d/14uzofB5ax8jGVoI6ox5y8JAk3e0t_HrwhfzlGcs8FBE/gviz/tq?tqx=out:csv&sheet=Sidney',
+        dataType: "text",
+        success: function (csvData) { makeGeoJSON4(csvData); }
+      });
 
 
-
+//// LAYER CINTHIA
+      
       function makeGeoJSON(csvData) {
         csv2geojson.csv2geojson(csvData, {
           latfield: 'Latitude',
@@ -88,7 +116,7 @@
             
 
             map.addLayer({
-              'id': 'csvData',
+              'id': 'cinthia',
               'type': 'circle',
               'source': {
                 'type': 'geojson',
@@ -104,7 +132,7 @@
             // When a click event occurs on a feature in the csvData layer, open a popup at the
             // location of the feature, with description HTML from its properties.
             
-            map.on('click', 'csvData', function (e) {
+            map.on('click', 'cinthia', function (e) {
               var coordinates = e.features[0].geometry.coordinates.slice();
 
               //set popup text 
@@ -163,6 +191,236 @@
 
         });
       };
+//// FIM CINTHIA
+//// LAYER ALINE
+      
+      function makeGeoJSON2(csvData) {
+        csv2geojson.csv2geojson(csvData, {
+          latfield: 'Latitude',
+          lonfield: 'Longitude',
+          delimiter: ','
+        }, function (err, data) {
+          
+          map.on('load', function () {
+            
+
+            map.addLayer({
+              'id': 'aline',
+              'type': 'circle',
+              'source': {
+                'type': 'geojson',
+                'data': data
+              },
+              'paint': {
+                'circle-radius': 9,
+                'circle-color': "#ffffff",
+              }
+            });
+
+
+            // When a click event occurs on a feature in the csvData layer, open a popup at the
+            // location of the feature, with description HTML from its properties.
+            
+            map.on('click', 'aline', function (e) {
+              var coordinates = e.features[0].geometry.coordinates.slice();
+
+              var description = `<h3>` + `<b>` + e.features[0].properties.Nome + `</b>` +`</h3>` + `<br>` + `<h4>` + e.features[0].properties.Produtos + `</h4>`;
+              
+              
+              
+               /*
+              player html*/
+        
+              
+              // Ensure that if the map is zoomed out such that multiple
+              // copies of the feature are visible, the popup appears
+              // over the copy being pointed to.
+              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+              coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+              }
+
+              //add Popup to map
+
+              new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(description)
+                .addTo(map);
+            });
+          
+
+            // Change the cursor to a pointer when the mouse is over the places layer.
+            map.on('mouseenter', 'csvData', function () {
+              map.getCanvas().style.cursor = 'pointer';
+            });
+            
+             map.on('mouseenter', 'csvData2', function () {
+              map.getCanvas().style.cursor = 'pointer';
+            });
+
+            // Change it back to a pointer when it leaves.
+            map.on('mouseleave', 'places', function () {
+              map.getCanvas().style.cursor = '';
+            });
+        
+            
+          });
+
+        });
+      };
+//// FIM ALINE
+//// LAYER Alketa
+      
+      function makeGeoJSON3(csvData) {
+        csv2geojson.csv2geojson(csvData, {
+          latfield: 'Latitude',
+          lonfield: 'Longitude',
+          delimiter: ','
+        }, function (err, data) {
+          
+          map.on('load', function () {
+            
+
+            map.addLayer({
+              'id': 'alketa',
+              'type': 'circle',
+              'source': {
+                'type': 'geojson',
+                'data': data
+              },
+              'paint': {
+                'circle-radius': 9,
+                'circle-color': "#0f0f0f",
+              }
+            });
+
+
+            // When a click event occurs on a feature in the csvData layer, open a popup at the
+            // location of the feature, with description HTML from its properties.
+            
+            map.on('click', 'alketa', function (e) {
+              var coordinates = e.features[0].geometry.coordinates.slice();
+
+              var description = `<h3>` + `<b>` + e.features[0].properties.Nome + `</b>` +`</h3>` + `<br>` + `<h4>` + e.features[0].properties.Produtos + `</h4>`;
+              
+              
+              
+               /*
+              player html*/
+        
+              
+              // Ensure that if the map is zoomed out such that multiple
+              // copies of the feature are visible, the popup appears
+              // over the copy being pointed to.
+              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+              coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+              }
+
+              //add Popup to map
+
+              new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(description)
+                .addTo(map);
+            });
+          
+
+            // Change the cursor to a pointer when the mouse is over the places layer.
+            map.on('mouseenter', 'csvData', function () {
+              map.getCanvas().style.cursor = 'pointer';
+            });
+            
+             map.on('mouseenter', 'csvData2', function () {
+              map.getCanvas().style.cursor = 'pointer';
+            });
+
+            // Change it back to a pointer when it leaves.
+            map.on('mouseleave', 'places', function () {
+              map.getCanvas().style.cursor = '';
+            });
+        
+            
+          });
+
+        });
+      };
+//// FIM ALKETA
+//// LAYER SIDNEY
+      
+      function makeGeoJSON4(csvData) {
+        csv2geojson.csv2geojson(csvData, {
+          latfield: 'Latitude',
+          lonfield: 'Longitude',
+          delimiter: ','
+        }, function (err, data) {
+          
+          map.on('load', function () {
+            
+
+            map.addLayer({
+              'id': 'sidney',
+              'type': 'circle',
+              'source': {
+                'type': 'geojson',
+                'data': data
+              },
+              'paint': {
+                'circle-radius': 9,
+                'circle-color': "#f2f2f2",
+              }
+            });
+
+
+            // When a click event occurs on a feature in the csvData layer, open a popup at the
+            // location of the feature, with description HTML from its properties.
+            
+            map.on('click', 'sidney', function (e) {
+              var coordinates = e.features[0].geometry.coordinates.slice();
+
+              var description = `<h3>` + `<b>` + e.features[0].properties.Nome + `</b>` +`</h3>` + `<br>` + `<h4>` + e.features[0].properties.Produtos + `</h4>`;
+              
+              
+              
+               /*
+              player html*/
+        
+              
+              // Ensure that if the map is zoomed out such that multiple
+              // copies of the feature are visible, the popup appears
+              // over the copy being pointed to.
+              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+              coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+              }
+
+              //add Popup to map
+
+              new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(description)
+                .addTo(map);
+            });
+          
+
+            // Change the cursor to a pointer when the mouse is over the places layer.
+            map.on('mouseenter', 'csvData', function () {
+              map.getCanvas().style.cursor = 'pointer';
+            });
+            
+             map.on('mouseenter', 'csvData2', function () {
+              map.getCanvas().style.cursor = 'pointer';
+            });
+
+            // Change it back to a pointer when it leaves.
+            map.on('mouseleave', 'places', function () {
+              map.getCanvas().style.cursor = '';
+            });
+        
+            
+          });
+
+        });
+      };
+//// FIM ALKETA
+      
       
       
     });
