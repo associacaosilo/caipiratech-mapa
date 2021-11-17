@@ -114,10 +114,10 @@
         }, function (err, data) {
           
           map.on('load', function () {
-             map.loadImage('assets/verde.png',
+             map.loadImage('assets/vermelho.png',
               function(error, image) {
               if (error) throw error;
-              map.addImage('verde', image);
+              map.addImage('vermelho', image);
             });
 
             map.addLayer({
@@ -129,7 +129,7 @@
               },
               'layout': {
                 'visibility': 'visible',
-                'icon-image': 'verde',
+                'icon-image': 'vermelho',
                 'icon-anchor': 'bottom',
                 "icon-allow-overlap": true,
               }
@@ -157,19 +157,15 @@
             map.on('mouseenter', 'csvData', function () {
               map.getCanvas().style.cursor = 'pointer';
             });
-            
-             map.on('mouseenter', 'csvData2', function () {
-              map.getCanvas().style.cursor = 'pointer';
-            });
 
             // Change it back to a pointer when it leaves.
             map.on('mouseleave', 'places', function () {
               map.getCanvas().style.cursor = '';
             });
-            /*  
-            map.setLayoutProperty('verde', 'icon-size', 
-            ['interpolate', ['linear'], ['zoom'],0,0.01,6,0.08,15,0.2, 24,0.3]);
-            */
+              
+            map.setLayoutProperty('vermelho', 'icon-size', 
+            ['interpolate', ['linear'], ['zoom'], 0, 0.01, 6, 0.08, 15, 0.2, 24, 0.3]);
+            
 
             //var bbox = turf.bbox(data);
             //map.fitBounds(bbox, { padding: 50 });
@@ -189,10 +185,10 @@
         }, function (err, data) {
           
           map.on('load', function () {
-            map.loadImage('assets/verde.png',
+            map.loadImage('assets/vermelho.png',
               function(error, image) {
               if (error) throw error;
-              map.addImage('verde', image);
+              map.addImage('vermelho', image);
             });
 
             map.addLayer({
@@ -204,7 +200,7 @@
               },
               'layout': {
                 'visibility': 'visible',
-                'icon-image': 'verde',
+                'icon-image': 'vermelho',
                 'icon-anchor': 'bottom',
                 "icon-allow-overlap": true,
               }
@@ -270,10 +266,10 @@
         }, function (err, data) {
           
           map.on('load', function () {
-            map.loadImage('assets/verde.png',
+            map.loadImage('assets/vermelho.png',
               function(error, image) {
               if (error) throw error;
-              map.addImage('verde', image);
+              map.addImage('vermelho', image);
             });
 
             map.addLayer({
@@ -285,7 +281,7 @@
               },
               'layout': {
                 'visibility': 'visible',
-                'icon-image': 'verde',
+                'icon-image': 'vermelho',
                 'icon-anchor': 'bottom',
                 "icon-allow-overlap": true,
               }
@@ -355,10 +351,10 @@
           
           map.on('load', function () {
             
-            map.loadImage('assets/verde.png',
+            map.loadImage('assets/vermelho.png',
               function(error, image) {
               if (error) throw error;
-              map.addImage('verde', image);
+              map.addImage('vermelho', image);
             });
               
             map.addLayer({
@@ -370,7 +366,7 @@
               },
               'layout': {
                 'visibility': 'visible',
-                'icon-image': 'verde',
+                'icon-image': 'vermelho',
                 'icon-anchor': 'bottom',
                 "icon-allow-overlap": true,
               }
