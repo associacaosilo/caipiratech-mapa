@@ -114,38 +114,32 @@
         }, function (err, data) {
           
           map.on('load', function () {
-            
+             map.loadImage('assets/verde.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('verde', image);
+            });
 
             map.addLayer({
               'id': 'cinthia',
-              'type': 'circle',
+              'type': 'symbol',
               'source': {
                 'type': 'geojson',
                 'data': data
               },
-              'paint': {
-                'circle-radius': 9,
-                'circle-color': "#F24F15",
+              'layout': {
+                'visibility': 'visible',
+                'icon-image': 'verde',
+                'icon-anchor': 'bottom',
+                "icon-allow-overlap": true,
               }
             });
-
-
-            // When a click event occurs on a feature in the csvData layer, open a popup at the
-            // location of the feature, with description HTML from its properties.
             
             map.on('click', 'cinthia', function (e) {
               var coordinates = e.features[0].geometry.coordinates.slice();
 
               var description = `<img src="../cards/` + e.features[0].properties.Imagem + `.jpg" style="width:100%">`   ;
-              
-              
-               /*
-              player html*/
-        
-              
-              // Ensure that if the map is zoomed out such that multiple
-              // copies of the feature are visible, the popup appears
-              // over the copy being pointed to.
+
               while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
               coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
               }
@@ -172,11 +166,13 @@
             map.on('mouseleave', 'places', function () {
               map.getCanvas().style.cursor = '';
             });
+            /*  
+            map.setLayoutProperty('verde', 'icon-size', 
+            ['interpolate', ['linear'], ['zoom'],0,0.01,6,0.08,15,0.2, 24,0.3]);
+            */
 
             //var bbox = turf.bbox(data);
             //map.fitBounds(bbox, { padding: 50 });
-
-        
             
           });
 
@@ -193,18 +189,24 @@
         }, function (err, data) {
           
           map.on('load', function () {
-            
+            map.loadImage('assets/verde.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('verde', image);
+            });
 
             map.addLayer({
               'id': 'aline',
-              'type': 'circle',
+              'type': 'symbol',
               'source': {
                 'type': 'geojson',
                 'data': data
               },
-              'paint': {
-                'circle-radius': 9,
-                'circle-color': "#E2845A",
+              'layout': {
+                'visibility': 'visible',
+                'icon-image': 'verde',
+                'icon-anchor': 'bottom',
+                "icon-allow-overlap": true,
               }
             });
 
@@ -268,18 +270,24 @@
         }, function (err, data) {
           
           map.on('load', function () {
-            
+            map.loadImage('assets/verde.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('verde', image);
+            });
 
             map.addLayer({
               'id': 'alketa',
-              'type': 'circle',
+              'type': 'symbol',
               'source': {
                 'type': 'geojson',
                 'data': data
               },
-              'paint': {
-                'circle-radius': 9,
-                'circle-color': "#782A03",
+              'layout': {
+                'visibility': 'visible',
+                'icon-image': 'verde',
+                'icon-anchor': 'bottom',
+                "icon-allow-overlap": true,
               }
             });
 
@@ -347,17 +355,24 @@
           
           map.on('load', function () {
             
-
+            map.loadImage('assets/verde.png',
+              function(error, image) {
+              if (error) throw error;
+              map.addImage('verde', image);
+            });
+              
             map.addLayer({
               'id': 'sidney',
-              'type': 'circle',
+              'type': 'symbol',
               'source': {
                 'type': 'geojson',
                 'data': data
               },
-              'paint': {
-                'circle-radius': 9,
-                'circle-color': "#2A4D3C",
+              'layout': {
+                'visibility': 'visible',
+                'icon-image': 'verde',
+                'icon-anchor': 'bottom',
+                "icon-allow-overlap": true,
               }
             });
 
