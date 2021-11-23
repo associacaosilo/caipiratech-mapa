@@ -433,7 +433,10 @@
 
       // ZOOM
       // map.addControl(new mapboxgl.NavigationControl(), 'top-left');      
-    
+      // ZOOM
+     map.addControl(new mapboxgl.NavigationControl(), 'top-right'); // disable map zoom when using scroll
+      map.scrollZoom.disable(); 
+      
   </script>
 
   
